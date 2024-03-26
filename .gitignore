@@ -17,3 +17,15 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Ignore Terraform directory
+.terraform/
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+*.tfplan
+*.tfvars
+*.terraforinit
+*.terraform.lock.hcl
+Terraform\.terraform.lock.hcl

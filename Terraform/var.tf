@@ -25,5 +25,5 @@ variable "username" {
 
 variable "password" {
   description = "RDS instance password"
-  default     = "password123" # Update with your desired password
+  default     = "admin12345" # Update with your desired password
 }

@@ -100,6 +100,14 @@ resource "aws_security_group" "cloudgen_ec2_sg" {
   }
 
   ingress {
+    description      = "laravel connect"
+    from_port        = 8080
+    to_port          = 8080
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
     description      = "ssh from ec2"
     from_port        = 22
     to_port          = 22
@@ -107,6 +115,7 @@ resource "aws_security_group" "cloudgen_ec2_sg" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
+  
 
   egress {
     from_port        = 0
@@ -117,7 +126,7 @@ resource "aws_security_group" "cloudgen_ec2_sg" {
   }
 }
 
-resource "aws_instance" "laravel_instance" {
+resource "aws_instance" "projectlaravel" {
   ami           = var.ami
   instance_type = var.instance_type
   key_name      = "mykeypair"
@@ -129,7 +138,7 @@ resource "aws_instance" "laravel_instance" {
   user_data = "${file("./userdata.sh")}"
 
   tags = {
-    "Name" : "laravel_webserver"
+    "Name" : "projectlaravel"
   }
 }
 
@@ -222,7 +231,7 @@ resource "aws_security_group" "lb_sg" {
 
 
 # Create an application load balancer
-resource "aws_lb" "cloudgen_lb" {
+resource "aws_lb" "projectlaravel_lb" {
   name               = "cloudgen-load-balancer"
   internal           = false
   load_balancer_type = "application"
